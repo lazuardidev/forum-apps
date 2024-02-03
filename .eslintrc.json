@@ -23,6 +23,15 @@
     "object-curly-newline": "off",
     "react/jsx-one-expression-per-line": "off",
     "no-undef": "off",
-    "quotes": ["error", "double"]
+    "quotes": ["error", "double"],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": false,
+        "optionalDependencies": false,
+        "peerDependencies": false,
+        "packageDir": "./"
+      }
+    ]
   }
 }
