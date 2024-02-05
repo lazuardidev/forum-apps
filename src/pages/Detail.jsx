@@ -15,6 +15,7 @@ import {
   asyncDownVoteComment,
   asyncNeutralizeVoteComment,
 } from "../states/threadDetail/action";
+import CardStyled from "../components/styled/CardStyled";
 
 export default function Detail() {
   const { threadId } = useParams();
@@ -65,8 +66,8 @@ export default function Detail() {
   }
 
   return (
-    <div className="container mx-auto pb-4">
-      <div className="bg-white p-4 rounded-md shadow-lg mx-[16%]">
+    <div className="pb-4 mx-[16%]">
+      <CardStyled>
         <ThreadDetail
           {...threadDetail}
           authUser={authUser.id}
@@ -85,7 +86,7 @@ export default function Detail() {
           downVoteComment={onDownVoteComment}
           neturalizeVoteComment={onNeturalizeVoteComment}
         />
-      </div>
+      </CardStyled>
     </div>
   );
 }

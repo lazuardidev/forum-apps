@@ -4,6 +4,7 @@ import parse from "html-react-parser";
 import VoteButton from "./VoteButton";
 import postedAt from "../utils";
 import { userShape } from "./ThreadItem";
+import AvatarStyled from "./styled/AvatarStyled";
 
 export default function CommentItem({
   id,
@@ -22,11 +23,7 @@ export default function CommentItem({
       <div>
         <div className="flex flex-row  justify-between">
           <div className="flex items-center space-x-4">
-            <img
-              src={owner.avatar}
-              alt="Avatar Icon"
-              className="w-12 h-12 rounded-full"
-            />
+            <AvatarStyled src={owner.avatar} alt="Avatar Icon" width="48px" />
             <div className="font-bold">{owner.name}</div>
           </div>
           <div className="self-center">

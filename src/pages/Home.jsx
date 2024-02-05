@@ -17,11 +17,14 @@ export default function Home() {
     threads = [],
     users = [],
     authUser,
-  } = useSelector((state) => ({
-    threads: state.threads,
-    users: state.users,
-    authUser: state.authUser,
-  }), shallowEqual);
+  } = useSelector(
+    (state) => ({
+      threads: state.threads,
+      users: state.users,
+      authUser: state.authUser,
+    }),
+    shallowEqual
+  );
 
   const categories = Array.from(
     new Set(threads.map((thread) => thread.category))
@@ -50,7 +53,7 @@ export default function Home() {
   }));
 
   return (
-    <div className="container mx-auto">
+    <div className="mx-auto">
       <div className="flex flex-wrap mb-2 mx-[16%]">
         {categories.map((category) => (
           <button

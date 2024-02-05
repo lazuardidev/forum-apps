@@ -4,6 +4,7 @@ import parse from "html-react-parser";
 import { FaComment } from "react-icons/fa";
 import VoteButton from "./VoteButton";
 import postedAt from "../utils";
+import AvatarStyled from "./styled/AvatarStyled";
 
 export default function ThreadDetail({
   id,
@@ -38,17 +39,13 @@ export default function ThreadDetail({
         />
         <FaComment className="text-primary ml-4" size={16} />
         <p className="text-primary ml-2">{postedAt(createdAt)}</p>
-        <p className="text-primary ml-2">
+        <div className="text-primary ml-2">
           <span className="flex items-center space-x-2">
-            Dibuat Oleh
-            <img
-              src={owner.avatar}
-              alt="Avatar Icon"
-              className="w-5 h-5 ml-2 mr-1 rounded-full"
-            />
-            {owner.name}
+            <p>Dibuat Oleh</p>
+            <AvatarStyled src={owner.avatar} alt="Avatar Icon" width="20px" />
+            <p>{owner.name}</p>
           </span>
-        </p>
+        </div>
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import AvatarStyled from "./styled/AvatarStyled";
 
 export default function Navigation({ authUser, signOut }) {
   return (
@@ -19,13 +20,8 @@ export default function Navigation({ authUser, signOut }) {
                 LEADERBOARD
               </Link>
             </div>
-
             <div className="flex items-center space-x-2">
-              <img
-                src={authUser.avatar}
-                alt="Avatar Icon"
-                className="w-10 h-10 rounded-full"
-              />
+              <AvatarStyled src={authUser.avatar} alt="Avatar Icon" />
               <button
                 type="button"
                 className="bg-red-500 text-white px-4 py-2 rounded-md"

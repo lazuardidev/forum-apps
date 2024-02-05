@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import useInput from "../hooks/useInput";
+import TextareaStyled from "./styled/TextareaStyled";
 
 export default function ThreadInput({ addThread }) {
   const [title, onTitleChange] = useInput("");
@@ -27,8 +28,7 @@ export default function ThreadInput({ addThread }) {
           onChange={onCategoryChange}
         />
       </div>
-      <textarea
-        className="w-full p-2 border border-gray-300 rounded-md"
+      <TextareaStyled
         rows="4"
         placeholder="Masukkan Ide Kamu"
         value={body}

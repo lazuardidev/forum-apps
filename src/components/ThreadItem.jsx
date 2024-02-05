@@ -5,6 +5,7 @@ import parse from "html-react-parser";
 import { FaComment } from "react-icons/fa";
 import VoteButton from "./VoteButton";
 import postedAt from "../utils";
+import CardStyled from "./styled/CardStyled";
 
 export default function ThreadItem({
   id,
@@ -28,7 +29,7 @@ export default function ThreadItem({
   };
 
   return (
-    <div className="w-full mb-6 bg-white p-4 rounded-md cursor-pointer shadow-lg">
+    <CardStyled>
       <button type="button" className="text-left" onClick={onThreadClick}>
         <p className="text-secondary text-sm mb-4">#{category}</p>
         <h2 className="text-primary text-2xl font-bold mb-2">{title}</h2>
@@ -49,7 +50,7 @@ export default function ThreadItem({
         <p className="text-primary ml-4">{postedAt(createdAt)}</p>
         <p className="text-primary ml-4">Dibuat Oleh {threadOwner.name}</p>
       </div>
-    </div>
+    </CardStyled>
   );
 }
 

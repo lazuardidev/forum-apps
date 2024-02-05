@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import useInput from "../hooks/useInput";
+import TextareaStyled from "./styled/TextareaStyled";
 
 export default function CommentInput({ addComment }) {
   const [comment, onCommentChange, setComment] = useInput("");
@@ -16,8 +17,7 @@ export default function CommentInput({ addComment }) {
         Beri Komentar
       </div>
       <div className="mt-1">
-        <textarea
-          className="w-full p-2 border border-gray-300 rounded-md"
+        <TextareaStyled
           rows={4}
           value={comment}
           onChange={onCommentChange}
