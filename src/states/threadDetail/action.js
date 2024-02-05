@@ -196,4 +196,5 @@ export {
   asyncUpVoteComment,
   asyncDownVoteComment,
   asyncNeutralizeVoteComment,
+  receiveThreadDetailActionCreator,
 };
