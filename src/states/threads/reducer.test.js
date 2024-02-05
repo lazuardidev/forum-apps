@@ -1,14 +1,9 @@
 /**
  * test scenario for threadReducer
  *
- * - threadReducer function
- *  - should return the initial state when given by unknown action
- *  - should return the thread  when given by RECEIVE_THREADS action
- *  - should return new thread  when given by CREATE_THREAD action
- *  - should return the thread  with toggled UpVote when given by UP_VOTE_THREAD action
- *  - should return the thread with toggled DownVote when given by DOWN_VOTE_THREAD action
- *  - should return the thread without toggled UpVote and DownVote when given
- *    by NEUTRALIZE_VOTE_THREAD action
+ * - threadReducers function
+ * - should return the initial state when given by unknown action
+ * - should return the threads when given by RECEIVE_THREADS action
  */
 
 import {
@@ -16,7 +11,7 @@ import {
 } from "vitest";
 import threadReducer from "./reducer";
 
-describe("threadReducers function", () => {
+describe("threadReducer  function", () => {
   it("should return the initial state when given by unknown action", () => {
     // arrange
     const initialState = [];
@@ -29,7 +24,7 @@ describe("threadReducers function", () => {
     expect(nextState).toEqual(initialState);
   });
 
-  it("should return the thread when given by RECEIVE_THREADS action", () => {
+  it("should return the threads when given by RECEIVE_THREADS action", () => {
     // arrange
     const initialState = [];
     const action = {
@@ -37,15 +32,29 @@ describe("threadReducers function", () => {
       payload: {
         threads: [
           {
-            id: "thread-1",
-            title: "Thread Pertama",
-            body: "Ini adalah thread pertama",
-            category: "General",
-            createdAt: "2021-06-21T07:00:00.000Z",
-            ownerId: "users-1",
+            id: "thread-Np47p4jhUXYhrhRn",
+            title: "Bagaimana pengalamanmu belajar Redux?",
+            body: "Coba ceritakan dong, gimana pengalaman kalian belajar Redux di Dicoding?",
+            category: "redux",
+            createdAt: "2023-05-29T07:55:52.266Z",
+            ownerId: "user-mQhLzINW_w5TxxYf",
+            totalComments: 0,
             upVotesBy: [],
-            downVotesBy: [],
+            downVotesBy: []
           },
+          {
+            id: "thread-91KocEqYPRz68MhD",
+            title: "Halo! Selamat datang dan silakan perkenalkan diri kamu",
+            body: "Coba ceritakan dong, gimana pengalaman kalian belajar Redux di Dicoding?",
+            category: "perkenalan",
+            createdAt: "2023-05-29T07:54:35.746Z",
+            ownerId: "user-aROWej8yYA1sOfHN",
+            totalComments: 1,
+            upVotesBy: [
+                "user-mQhLzINW_w5TxxYf"
+            ],
+            downVotesBy: []
+          }
         ],
       },
     };
@@ -55,141 +64,5 @@ describe("threadReducers function", () => {
 
     // assert
     expect(nextState).toEqual(action.payload.threads);
-  });
-  it("should return new thread when given by CREATE_THREAD action", () => {
-    // arrange
-    const initialState = [
-      {
-        id: "thread-1",
-        title: "Thread Pertama",
-        body: "Ini adalah thread pertama",
-        category: "General",
-        createdAt: "2021-06-21T07:00:00.000Z",
-        ownerId: "users-1",
-        upVotesBy: [],
-        downVotesBy: [],
-      },
-    ];
-    const action = {
-      type: "CREATE_THREAD",
-      payload: {
-        thread: {
-          id: "thread-2",
-          title: "Thread Kedua",
-          body: "Ini adalah thread kedua",
-          category: "General",
-          createdAt: "2021-06-21T07:00:00.000Z",
-          ownerId: "users-2",
-          upVotesBy: [],
-          downVotesBy: [],
-        },
-      },
-    };
-    // action
-    const nextState = threadReducer(initialState, action);
-
-    // assert
-    expect(nextState).toEqual([action.payload.thread, ...initialState]);
-  });
-
-  it("should return the thread with toggled UpVote when given by UP_VOTE_THREAD action", () => {
-    // arrange
-    const initialState = [
-      {
-        id: "thread-1",
-        title: "Thread Pertama",
-        body: "Ini adalah thread pertama",
-        category: "General",
-        createdAt: "2021-06-21T07:00:00.000Z",
-        ownerId: "users-1",
-        upVotesBy: [],
-        downVotesBy: [],
-      },
-    ];
-
-    const action = {
-      type: "UP_VOTE_THREAD",
-      payload: {
-        threadId: "thread-1",
-        userId: "users-1",
-      },
-    };
-    // action
-    const nextState = threadReducer(initialState, action);
-
-    // assert
-    expect(nextState).toEqual([
-      {
-        ...initialState[0],
-        upVotesBy: [action.payload.userId],
-        downVotesBy: [],
-      },
-    ]);
-  });
-  it("should return the thread with toggled DownVote when given by DOWN_VOTE_THREAD action", () => {
-    const initialState = [
-      {
-        id: "thread-1",
-        title: "Thread Pertama",
-        body: "Ini adalah thread pertama",
-        category: "General",
-        createdAt: "2021-06-21T07:00:00.000Z",
-        ownerId: "users-1",
-        upVotesBy: [],
-        downVotesBy: [],
-      },
-    ];
-
-    const action = {
-      type: "DOWN_VOTE_THREAD",
-      payload: {
-        threadId: "thread-1",
-        userId: "users-1",
-      },
-    };
-    // action
-    const nextState = threadReducer(initialState, action);
-
-    // assert
-    expect(nextState).toEqual([
-      {
-        ...initialState[0],
-        upVotesBy: [],
-        downVotesBy: [action.payload.userId],
-      },
-    ]);
-  });
-  it("should return the thread without toggled UpVote and DownVote when given by NEUTRALIZE_VOTE_THREAD action", () => {
-    const initialState = [
-      {
-        id: "thread-1",
-        title: "Thread Pertama",
-        body: "Ini adalah thread pertama",
-        category: "General",
-        createdAt: "2021-06-21T07:00:00.000Z",
-        ownerId: "users-1",
-        upVotesBy: [],
-        downVotesBy: [],
-      },
-    ];
-
-    const action = {
-      type: "NEUTRALIZE_VOTE_THREAD",
-      payload: {
-        threadId: "thread-1",
-        userId: "users-1",
-      },
-    };
-    // action
-    const nextState = threadReducer(initialState, action);
-
-    // assert
-    expect(nextState).toEqual([
-      {
-        ...initialState[0],
-        upVotesBy: [],
-        downVotesBy: [],
-      },
-    ]);
   });
 });

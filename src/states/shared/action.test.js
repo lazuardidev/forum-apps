@@ -1,9 +1,9 @@
 /**
  * test scenario for shared action
  *
- * - asyncPopulateUsersAndTalks thunk
- *  - should dispatch action correctly when data fetching success
- *  - should dispatch action and call alert correctly when data fetching failed
+ * - asyncPopulateUsersAndThreads thunk
+ * - should dispatch action correctly when data fetching success
+ * - should dispatch action and call alert correctly when data fetching failed
  */
 
 import {
@@ -16,22 +16,22 @@ import { receiveUsersActionCreator } from "../users/action";
 import asyncPopulateUsersAndThreads from "./action";
 
 const fakeThreadsResponse = {
-  id: "thread-1",
-  title: "Thread Pertama",
-  body: "Ini adalah thread pertama",
-  category: "General",
-  createdAt: "2021-06-21T07:00:00.000Z",
-  ownerId: "users-1",
+  id: "thread-Np47p4jhUXYhrhRn",
+  title: "Bagaimana pengalamanmu belajar Redux?",
+  body: "Coba ceritakan dong, gimana pengalaman kalian belajar Redux di Dicoding?",
+  createdAt: "2023-05-29T07:55:52.266Z",
+  ownerId: "user-mQhLzINW_w5TxxYf",
+  category: "redux",
+  comments: [],
   upVotesBy: [],
-  downVotesBy: [],
-  totalComments: 0,
+  downVotesBy: []
 };
 
 const fakeUsersResponse = {
-  id: "user-123",
-  name: "John Doe",
-  email: "john@example.com",
-  avatar: "https://generated-image-url.jpg",
+  id: "user-mQhLzINW_w5TxxYf",
+  name: "Dimas Saputra",
+  email: "dimas@dicoding.com",
+  avatar: "https://ui-avatars.com/api/?name=Dimas Saputra&background=random"
 };
 
 const fakeErrorResponse = new Error("Something went wrong");

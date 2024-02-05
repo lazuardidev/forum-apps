@@ -1,3 +1,10 @@
+/**
+ * test scenario for threadDetail action
+ *
+ * - asyncReceiveThreadDetail thunk
+ * - should dispatch action correctly when data fetching success
+ */
+
 import { hideLoading, showLoading } from "react-redux-loading-bar";
 import {
   describe, beforeEach, afterEach, it, vi, expect,
@@ -7,37 +14,36 @@ import { asyncReceiveThreadDetail, receiveThreadDetailActionCreator } from "./ac
 
 const fakeThreadsDetailResponse = [
   {
-    id: "thread-1",
-    title: "Thread Pertama",
-    body: "Ini adalah thread pertama",
-    category: "General",
-    createdAt: "2021-06-21T07:00:00.000Z",
+    id: "thread-Np47p4jhUXYhrhRn",
+    title: "Bagaimana pengalamanmu belajar Redux?",
+    body: "Coba ceritakan dong, gimana pengalaman kalian belajar Redux di Dicoding?",
+    createdAt: "2023-05-29T07:55:52.266Z",
     owner: {
-      id: "users-1",
-      name: "John Doe",
-      avatar: "https://generated-image-url.jpg",
+      id: "user-mQhLzINW_w5TxxYf",
+      name: "Dimas Saputra",
+      avatar: "https://ui-avatars.com/api/?name=Dimas Saputra&background=random"
     },
-    upVotesBy: [],
-    downVotesBy: [],
+    category: "redux",
     comments: [
       {
-        id: "comment-1",
-        content: "Ini adalah komentar pertama",
-        createdAt: "2021-06-21T07:00:00.000Z",
+        id: "comment-qUXTCZW8NsfBbzF1",
+        content: "begitu syulittt....",
+        createdAt: "2024-02-05T16:45:13.778Z",
         owner: {
-          id: "users-1",
-          name: "John Doe",
-          avatar: "https://generated-image-url.jpg",
+          id: "user-d1SNsKFyt-hfbnhw",
+          name: "test11",
+          avatar: "https://ui-avatars.com/api/?name=test11&background=random"
         },
         upVotesBy: [],
-        downVotesBy: [],
-      },
+        downVotesBy: []
+      }
     ],
+    upVotesBy: [],
+    downVotesBy: []
   },
 ];
 
 describe("asyncReceiveThreadDetail thunk", () => {
-  // jest.setTimeout(80000);
   beforeEach(() => {
     // backup original implementation
     api._getThreadDetail = api.getThreadDetail;
@@ -46,10 +52,10 @@ describe("asyncReceiveThreadDetail thunk", () => {
   afterEach(() => {
     // restore original implementation
     api.getThreadDetail = api._getThreadDetail;
-  });
 
-  // delete backup
-  delete api._getThreadDetail;
+    // delete backup
+    delete api._getThreadDetail;
+  });
 
   it("should dispatch action correctly when data fetching success", async () => {
     // arrange

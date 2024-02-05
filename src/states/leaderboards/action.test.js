@@ -2,8 +2,8 @@
  * test scenario for leaderboards action
  *
  * - asyncPopulateLeaderboards thunk
- *  - should dispatch action correctly when data fetching success
- *  - should dispatch action and call alert correctly when data fetching failed
+ * - should dispatch action correctly when data fetching success
+ * - should dispatch action and call alert correctly when data fetching failed
  */
 
 import { hideLoading, showLoading } from "react-redux-loading-bar";
@@ -19,13 +19,13 @@ import {
 const fakerLeaderboardsResponse = [
   {
     user: {
-      id: "users-1",
-      name: "John Doe",
-      email: "john@example.com",
-      avatar: "https://generated-image-url.jpg",
+      id: "user-mQhLzINW_w5TxxYf",
+      name: "Dimas Saputra",
+      email: "dimas@dicoding.com",
+      avatar: "https://ui-avatars.com/api/?name=Dimas Saputra&background=random"
     },
-    score: 10,
-  },
+    score: 25
+},
 ];
 
 const fakeErrorResponse = new Error("Something went wrong");
