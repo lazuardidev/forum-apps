@@ -9,7 +9,8 @@
     "lint": "eslint ./src --ext .jsx --ext .js",
     "preview": "vite preview",
     "test": "vitest",
-    "e2e": "cypress run"
+    "e2e": "cypress run",
+    "ci:test": "vitest --no-watch && start-server-and-test dev http-get://0.0.0.0:5173 e2e"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
@@ -42,6 +43,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "jsdom": "^24.0.0",
     "postcss": "^8.4.33",
+    "start-server-and-test": "^2.0.3",
     "tailwindcss": "^3.4.1",
     "vite": "^5.0.8",
     "vitest": "^1.2.2"
